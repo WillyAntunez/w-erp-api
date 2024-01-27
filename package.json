@@ -1,0 +1,25 @@
+{
+  "name": "w-erp-api",
+  "version": "0.0.0",
+  "description": "Api para el proyecto w-erp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WillyAntunez/w-erp-api.git"
+  },
+  "keywords": [
+    "erp",
+    "api",
+    "w-erp",
+    "AiO"
+  ],
+  "author": "Willy Antunez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WillyAntunez/w-erp-api/issues"
+  },
+  "homepage": "https://github.com/WillyAntunez/w-erp-api#readme"
+}
