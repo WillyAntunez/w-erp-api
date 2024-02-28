@@ -1,19 +1,17 @@
-import { Database } from './server/Database';
-import { OAuthAccessTokens } from './models/oauth2/OAuthAccessTokens';
-import { OAuthAuthorizationCodes } from './models/oauth2/OAuthAuthorizationCodes';
-import { OAuthClients } from './models/oauth2/OAuthClients';
-import { OAuthRefreshTokens } from './models/oauth2/OAuthRefreshTokens';
-import { Server } from './server/Server';
 import dotenv from 'dotenv';
+
+import { Database } from './server/Database';
+import { Server } from './server/Server';
+
+import { DocumentType } from './models/documents/DocumentType';
+import { DocumentTypeCategory } from './models/documents/DocumentTypeCategory';
 
 dotenv.config();
 
-const db = new Database(
+export const db = new Database(
     {
-        OAuthClients,
-        OAuthAuthorizationCodes,
-        OAuthAccessTokens,
-        OAuthRefreshTokens,
+        DocumentType,
+        DocumentTypeCategory,
     },
     process,
 );

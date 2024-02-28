@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { IDb } from '../interfaces/Server';
+import { IDb } from '../types/Server';
+import routes from '../routes/routes';
 
 const middlewares = [
     cors(),
@@ -34,8 +35,13 @@ export class Server {
         });
     }
 
+    public routes() {
+        this.app.use('/api/v1', routes);
+    }
+
     public start() {
         this.middlewares(...middlewares);
+        this.routes();
 
         this.app.listen(this.port, () => {
             console.log(`Server listening on port ${this.port}`);
