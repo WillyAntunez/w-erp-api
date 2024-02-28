@@ -1,7 +1,9 @@
-import { IErrorResponse, ISuccessResponse } from '../../types/Responses';
+import { IErrorResponse, ISuccessResponse } from '../../types/responses';
 import { db } from '../..';
 import { RequestHandler } from 'express';
 
+// * DOCUMENT TYPES
+// GET /private/documents/types
 export const getDocumentTypes: RequestHandler = async (req, res) => {
     try {
         const data = await db.models.DocumentType.findAll({
@@ -33,6 +35,8 @@ export const getDocumentTypes: RequestHandler = async (req, res) => {
     }
 };
 
+// * DOCUMENT TYPE CATEGORIES
+// GET /private/documents/types/categories
 export const getDocumentTypeCategories: RequestHandler = async (req, res) => {
     try {
         const data = await db.models.DocumentTypeCategory.findAll();

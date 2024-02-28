@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { IDBModel, IModelFn } from '../../types/Server';
+import { IDBModel, IModelFn } from '../../types/server';
 import { IDocumentTypeCategoryModel } from '../../types/documents';
 
 export const DocumentTypeCategory: IModelFn = sequelize => {

@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { IDBModel, IDb, IModelFn } from '../types/Server';
+import { IDBModel, IDb, IModelFn } from '../types/server';
 
 export class Database implements IDb {
     connection;

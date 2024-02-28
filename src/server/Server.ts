@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { IDb } from '../types/Server';
+import { IDb } from '../types/server';
 import routes from '../routes/routes';
 
 const middlewares = [
