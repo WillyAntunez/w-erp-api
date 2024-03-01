@@ -4,7 +4,7 @@ import { IDocumentTypeModel } from '../../types/documents';
 
 export const DocumentType: IModelFn = sequelize => {
     const DocumentType: IDBModel = sequelize.define<IDocumentTypeModel>(
-        'documentTypes',
+        'DocumentType',
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -41,6 +41,11 @@ export const DocumentType: IModelFn = sequelize => {
         DocumentType.belongsTo(models.DocumentTypeCategory, {
             foreignKey: 'categoryId',
             as: 'category',
+        });
+
+        DocumentType.hasMany(models.Document, {
+            foreignKey: 'documentTypeId',
+            as: 'documents',
         });
     };
 

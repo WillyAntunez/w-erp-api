@@ -5,7 +5,7 @@ import { IDocumentTypeCategoryModel } from '../../types/documents';
 export const DocumentTypeCategory: IModelFn = sequelize => {
     const DocumentTypeCategory: IDBModel =
         sequelize.define<IDocumentTypeCategoryModel>(
-            'documentTypeCategories',
+            'DocumentTypeCategory',
             {
                 id: {
                     type: DataTypes.INTEGER,

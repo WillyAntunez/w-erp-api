@@ -27,3 +27,23 @@ export interface IDocumentTypeCategoryModel
         IDocumentTypeCategory,
         Optional<IDocumentTypeCategory, 'id'>
     > {}
+
+// * document
+interface IDocument {
+    id: number;
+    customerId: number;
+    number: string;
+    url: string;
+    issueDate: string;
+    expirationDate: string;
+    issuedBy: string;
+    comment: string;
+    documentTypeId: number;
+    updatedAt: string;
+    createdAt: string;
+}
+
+export interface IDocumentModel
+    extends Model<IDocument, Optional<IDocument, 'id'>> {}
+
+
