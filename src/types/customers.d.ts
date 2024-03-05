@@ -10,7 +10,7 @@ interface ICustomer {
     status: string;
     age: number;
     gender: string;
-    maritalStatus: string;
+    maritalStatusId: string;
     occupation: string;
     preferredLanguage: string;
     description: string;

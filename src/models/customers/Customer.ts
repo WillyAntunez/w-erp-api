@@ -41,8 +41,8 @@ export const Customer: IModelFn = sequelize => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            maritalStatus: {
-                type: DataTypes.STRING,
+            maritalStatusId: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             occupation: {
@@ -95,6 +95,11 @@ export const Customer: IModelFn = sequelize => {
 
         models.Customer.hasMany(models.Document, {
             as: 'documents',
+        });
+
+        models.Customer.belongsTo(models.MaritalStatus, {
+            foreignKey: 'maritalStatusId',
+            as: 'maritalStatus',
         });
     };
 

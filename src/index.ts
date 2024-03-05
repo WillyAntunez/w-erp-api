@@ -11,6 +11,7 @@ import { City } from './models/geography/City';
 import { ContactInfo } from './models/contacts/ContactInfo';
 import { Contact } from './models/contacts/Contact';
 import { Customer } from './models/customers/Customer';
+import { MaritalStatus } from './models/shared/MaritalStatus';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ export const db = new Database(
         Country,
         City,
         Customer,
+        MaritalStatus,
     },
     process,
 );

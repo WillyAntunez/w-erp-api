@@ -60,6 +60,10 @@ export const getCustomerById: RequestHandler = async (req, res) => {
                     ],
                 },
                 {
+                    model: db.models.MaritalStatus,
+                    as: 'maritalStatus',
+                },
+                {
                     model: db.models.Contact,
                     as: 'contacts',
                     include: [

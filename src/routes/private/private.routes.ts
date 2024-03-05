@@ -12,6 +12,7 @@ import {
     getCustomerById,
     getCustomers,
 } from '../../controllers/customers/Customer';
+import { getMaritalStatuses } from '../../controllers/shared/maritalStatuses';
 
 const privateRoutes = express.Router();
 
@@ -46,5 +47,9 @@ privateRoutes.get('/geography/countries', getCountries);
 privateRoutes.get('/customers', getCustomers);
 // GET /private/customer/:id
 privateRoutes.get('/customer/:id', getCustomerById);
+
+// * MARITAL STATUSES
+// GET /private/shared/marital-statuses
+privateRoutes.get('/shared/marital-statuses', getMaritalStatuses);
 
 export default privateRoutes;
