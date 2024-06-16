@@ -6,11 +6,13 @@ import {
 import { getDocuments } from '../../controllers/documents/documents';
 import { getContactInfo } from '../../controllers/contacts/ContactInfo';
 import { getContact } from '../../controllers/contacts/Contact';
-import { getCities } from '../../controllers/geography/City';
+import { getCities } from '../../controllers/geography/city';
 import { getCountries } from '../../controllers/geography/Countries';
 import {
+    createCustomer,
     getCustomerById,
     getCustomers,
+    updateCustomer,
 } from '../../controllers/customers/Customer';
 import { getMaritalStatuses } from '../../controllers/shared/maritalStatuses';
 
@@ -47,6 +49,10 @@ privateRoutes.get('/geography/countries', getCountries);
 privateRoutes.get('/customers', getCustomers);
 // GET /private/customer/:id
 privateRoutes.get('/customer/:id', getCustomerById);
+// POST /private/customer
+privateRoutes.post('/customer', createCustomer);
+// PUT /private/customer/:id
+privateRoutes.put('/customer/:id', updateCustomer);
 
 // * MARITAL STATUSES
 // GET /private/shared/marital-statuses

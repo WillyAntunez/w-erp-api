@@ -19,19 +19,15 @@ export const Document: IModelFn = sequelize => {
             },
             url: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             issueDate: {
                 type: DataTypes.DATE,
-                allowNull: false,
             },
             expirationDate: {
                 type: DataTypes.DATE,
-                allowNull: false,
             },
             issuedBy: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             comment: {
                 type: DataTypes.STRING,
@@ -42,7 +38,6 @@ export const Document: IModelFn = sequelize => {
             },
             customerId: {
                 type: DataTypes.INTEGER,
-                allowNull: true,
             },
             createdAt: {
                 type: DataTypes.DATE,

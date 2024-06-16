@@ -19,12 +19,10 @@ export const Contact: IModelFn = sequelize => {
 
             customerId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
             },
 
             contactInfoId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
             },
 
             relationship: {

@@ -68,8 +68,7 @@ export class Database implements IDb {
 
             this.initModels();
         } catch (error) {
-            console.error('Unable to connect to the database:', error);
-            throw error;
+            console.error('Unable to connect to the database');
         }
     }
 }

@@ -7,4 +7,5 @@ export interface IErrorResponse {
     success: false;
     error: true;
     message: string;
+    errors?: any[];
 }

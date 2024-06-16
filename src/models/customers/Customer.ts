@@ -15,7 +15,6 @@ export const Customer: IModelFn = sequelize => {
             },
             contactInfoId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
             },
             firstName: {
                 type: DataTypes.STRING,
@@ -33,41 +32,32 @@ export const Customer: IModelFn = sequelize => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            age: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
+            birthdate: {
+                type: DataTypes.DATE,
             },
             gender: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             maritalStatusId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
             },
             occupation: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             preferredLanguage: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             description: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             economicActivity: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             legalName: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             tradeName: {
                 type: DataTypes.STRING,
-                allowNull: false,
             },
             createdAt: {
                 type: DataTypes.DATE,
