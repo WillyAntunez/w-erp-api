@@ -7,7 +7,7 @@ import {
     varchar,
 } from 'drizzle-orm/pg-core';
 
-import { commonStatusEnum } from '..';
+import { commonStatusEnum } from '../common';
 
 export const productCategories = pgTable(
     'product_categories',
@@ -23,10 +23,12 @@ export const productCategories = pgTable(
     },
     productCategories => {
         return {
-            statusIndex: uniqueIndex('status_idx').on(productCategories.status),
-            parentCategoryIdIndex: uniqueIndex('parent_category_id_idx').on(
-                productCategories.parentCategoryId,
+            statusIndex: uniqueIndex('product_categories_status_idx').on(
+                productCategories.status,
             ),
+            parentCategoryIdIndex: uniqueIndex(
+                'product_categories_parent_category_id_idx',
+            ).on(productCategories.parentCategoryId),
         };
     },
 );

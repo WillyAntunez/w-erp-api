@@ -20,9 +20,9 @@ export const products = pgTable(
     },
     products => {
         return {
-            nameIndex: uniqueIndex('name_idx').on(products.name),
-            statusIndex: uniqueIndex('status_idx').on(products.status),
-            priceIndex: uniqueIndex('price_idx').on(products.price),
+            nameIndex: uniqueIndex('products_name_idx').on(products.name),
+            statusIndex: uniqueIndex('products_status_idx').on(products.status),
+            priceIndex: uniqueIndex('products_price_idx').on(products.price),
         };
     },
 );
