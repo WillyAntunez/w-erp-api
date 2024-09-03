@@ -1,74 +1,29 @@
-import { Sequelize } from 'sequelize';
-import { IDBModel, IDb, IModelFn } from '../types/server';
+import dotenv from 'dotenv';
 
-export class Database implements IDb {
-    connection;
-    process;
-    models: {
-        [key: string]: IDBModel;
-    };
-    modelsFns;
+dotenv.config();
 
-    constructor(
-        modelsFns: {
-            [key: string]: IModelFn;
-        },
-        process: NodeJS.Process,
-    ) {
-        this.modelsFns = modelsFns;
-        this.process = process;
+import { sql } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import { migrate } from 'drizzle-orm/postgres-js/migrator';
+import postgres from 'postgres';
 
-        const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT } = process.env;
+const migrationClient = postgres(process.env.DB_CONNECTION_STRING!);
+migrate(drizzle(migrationClient), 'src/server/migrations');
 
-        this.connection = new Sequelize(
-            `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-            {
-                logging: false,
-            },
-        );
+console.log(process.env.DB_CONNECTION_STRING);
 
-        this.modelsFns = { ...modelsFns };
+const queryClient = postgres(process.env.DB_CONNECTION_STRING!);
 
-        this.models = {};
-        this.initModels();
+export const db = drizzle(queryClient);
+
+export const testDb = async () => {
+    try {
+        await db.execute(sql`SELECT 1`);
+        console.log('Database connection test successful');
+    } catch (error) {
+        console.error('Error testing database connection: ');
+        console.error(error);
     }
+};
 
-    private initModels = () => {
-        for (const modelKey in this.modelsFns) {
-            this.models[modelKey] = this.modelsFns[modelKey](this.connection);
-        }
-
-        for (const modelKey in this.modelsFns) {
-            const associate = this.models[modelKey]?.associate;
-
-            if (associate) {
-                associate(this.models);
-            }
-        }
-
-        console.log('Models initialized successfully.');
-    };
-
-    public async sync() {
-        try {
-            await this.connection.sync();
-            console.log('Models synced successfully.');
-        } catch (error) {
-            console.error('Unable to sync models:', error);
-            throw error;
-        }
-    }
-
-    public async connect() {
-        try {
-            await this.connection.authenticate();
-            console.log(
-                'Connection with database has been established successfully.',
-            );
-
-            this.initModels();
-        } catch (error) {
-            console.error('Unable to connect to the database');
-        }
-    }
-}
+export default db;

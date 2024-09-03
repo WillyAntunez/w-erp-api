@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { IDb } from '../types/server';
 import routes from '../routes/routes';
 
 const middlewares = [
@@ -14,9 +13,8 @@ const middlewares = [
 export class Server {
     private port: number;
     private app: express.Application;
-    private db: IDb;
 
-    constructor(process: NodeJS.Process, db: IDb) {
+    constructor(process: NodeJS.Process) {
         const PORT = Number(process?.env?.PORT || 4000);
 
         if (!process.env.PORT) {
@@ -25,8 +23,6 @@ export class Server {
 
         this.port = PORT;
         this.app = express();
-
-        this.db = db;
     }
 
     public middlewares(...middlewares: Array<express.RequestHandler>) {
@@ -46,9 +42,5 @@ export class Server {
         this.app.listen(this.port, () => {
             console.log(`Server listening on port ${this.port}`);
         });
-    }
-
-    public dbConnect() {
-        this.db.connect();
     }
 }
